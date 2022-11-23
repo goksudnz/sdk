@@ -1,0 +1,344 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Proposal Service</title>
+    <meta name="description" content="Documentation for InsurGateway SDK">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/assets/normalize.css?v=1669131067"
+        media="screen" />
+    <link rel="stylesheet" type="text/css" href="/assets/doctave-style.css?v=1669131067"
+        media="screen" />
+    <link rel="stylesheet" type="text/css" href="/assets/katex.css?v=1669131067" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/assets/prism-ghcolors.css?v=1669131067"
+        media="screen" />
+
+    <script>
+        var DOCTAVE_TIMESTAMP = "1669131067";
+        var BASE_PATH = "/";
+        var color = localStorage.getItem('doctave-color')
+
+        if (color === 'dark') {
+            document.getElementsByTagName('html')[0].classList.remove('light');
+            document.getElementsByTagName('html')[0].classList.add('dark');
+        } else {
+            document.getElementsByTagName('html')[0].classList.remove('dark');
+            document.getElementsByTagName('html')[0].classList.add('light');
+        }
+    </script>
+
+    
+</head>
+
+<body>
+    <label for='menu-toggle-switch' class='menu-toggle-button'>
+        ☰
+    </label>
+    <input type="checkbox" id="menu-toggle-switch" value='0' />
+    <div class='page'>
+        <div class='header'>
+            <div class='logo'>
+                
+                <h2 class='project-name'>
+                    <a href="/">
+                        InsurGateway SDK
+                    </a>
+                </h2>
+            </div>
+            <div class='search'>
+                <form id='search-form'>
+    <input type='text' id='search-box' autocomplete="off" placeholder="Search..."></input>
+    <span class='search-icon'>S</span>
+    <ul id='search-results'></ul>
+</form>
+
+            </div>
+            <div class='header-dummy-right'>
+            </div>
+        </div>
+        <div class='container'>
+            <div class='sidebar-left'>
+                <nav class='site-nav'>
+    <ul>
+        
+            <li><a href="/">Başlarken</a></li>
+            
+        
+            <li><a href="/introduction">Genel Bakış</a></li>
+            
+        
+            <li><a href="/integration">Entegrasyon</a></li>
+            
+        
+            <li><a href="/services">Servisler</a></li>
+            
+                <ul>
+    
+        <li><a href="/services/document">Document Service</a></li>
+        
+    
+        <li><a href="/services/outsource">OutsourceProcess Service</a></li>
+        
+    
+        <li><a class="active" href="/services/proposal">Proposal Service</a></li>
+        
+    
+</ul>
+
+            
+        
+            <li><a href="/models">Modeller</a></li>
+            
+                <ul>
+    
+        <li><a href="/models/document-response">DocumentResponse</a></li>
+        
+    
+        <li><a href="/models/installment-detail">InstallmentDetail</a></li>
+        
+    
+        <li><a href="/models/key-value-set">KeyValueSet</a></li>
+        
+    
+        <li><a href="/models/outsource-process-response">OutsourceProcessResponse</a></li>
+        
+    
+        <li><a href="/models/parameter-value-set">ParameterValueSet</a></li>
+        
+    
+        <li><a href="/models/price">Price</a></li>
+        
+    
+        <li><a href="/models/proposal-response">ProposalResponse</a></li>
+        
+    
+        <li><a href="/models/proposal-result">ProposalResult</a></li>
+        
+    
+        <li><a href="/models/response">Response&lt;T&gt;</a></li>
+        
+    
+</ul>
+
+            
+        
+    </ul>
+    <span id='light-dark-mode-switch'>
+        <svg xmlns="http://www.w3.org/2000/svg" id="dark-mode-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" id="light-mode-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+        </svg>
+    </span>
+</nav>
+
+            </div>
+            <div class='doctave-content'>
+                <h1 id="proposal-servis-dokümantasyonu">Proposal Servis Dokümantasyonu</h1>
+<p>Bu doküman, <code>InsurGateway</code>'in <code>Proposal</code> servisinde kullanabileceğiniz metotları barındırır. Servisin doğru kullanımı için gerekli olan bilgileri metotlara ait açıklamalar içerisinde bulabilirsiniz.</p>
+<h2 id="getproposal">GetProposal</h2>
+<p><code>InsurGateway</code> üzerinden sigorta şirketlerinin teklif alma süreçlerini yöneten servistir. Bu servisi kullanarak sigorta şirketinde teklif yaratabilirsiniz.</p>
+<h3 id="parametreler">Parametreler</h3>
+<table><thead><tr><th align="left">İsim</th><th align="center">Tip</th><th align="right">Açıklama</th></tr></thead><tbody>
+<tr><td align="left">keyValuePairs</td><td align="center">Dictionary&lt;int, List&lt;string&gt;&gt;</td><td align="right">Servise gönderilecek key - value değerlerini tutar. İhtiyaç halinde key için birden fazla değer gönderilebilir.</td></tr>
+</tbody></table>
+<p>keyValuePairs parametresi boş gönderildiği taktirde, SDK tarafından boş gönderilemeyeceğine yönelik hata mesajı dönecektir.</p>
+<div class="callout error">
+<p>
+⚠️ keyValuePair için null veya boş değer olamaz!
+</p>
+</div><h3 id="zorunlu-keyler">Zorunlu Keyler</h3>
+<p>Servisin geliştirme kiti tarafından başarılı şekilde <code>InsurGateway</code> servislerine erişebilmesi için metot özelinde zorunlu tutulan keyler aşağıda belirtilmiştir.</p>
+<p>Belirtilen keyler gönderilmediği taktirde SDK, <code>InsurGateway</code> servislerini tetiklemez.</p>
+<table><thead><tr><th align="left">Key</th><th align="right">Açıklama</th></tr></thead><tbody>
+<tr><td align="left">113</td><td align="right">Acente Id</td></tr>
+<tr><td align="left">114</td><td align="right">Acente Kullanıcı Adı</td></tr>
+<tr><td align="left">115</td><td align="right">Acente Şifresi</td></tr>
+</tbody></table>
+<div class="callout error">
+<p>
+⚠️ Acente giriş bilgileri eksik!
+</p>
+</div><table><thead><tr><th align="left">Key</th><th align="right">Açıklama</th></tr></thead><tbody>
+<tr><td align="left">125</td><td align="right">InsurGateway Ürün Branş Kodu</td></tr>
+<tr><td align="left">126</td><td align="right">Sigorta Şirketi</td></tr>
+<tr><td align="left">127</td><td align="right">InsurGateway Ürün Kodu</td></tr>
+</tbody></table>
+<div class="callout error">
+<p>
+⚠️ Zorunlu keyler eksik!
+</p>
+</div><h3 id="key-parametreleri:-125">Key Parametreleri: 125</h3>
+<p>125 numaralı key, ürün branşlarını simgeler. Bu keye ait gönderilebilecek parametrelerin bir kısmı aşağıda tablo halinde verilmiştir.</p>
+<table><thead><tr><th align="left">Değer</th><th align="right">Açıklama</th></tr></thead><tbody>
+<tr><td align="left">1</td><td align="right">Kasko</td></tr>
+<tr><td align="left">2</td><td align="right">Trafik</td></tr>
+<tr><td align="left">3</td><td align="right">Dask</td></tr>
+<tr><td align="left">4</td><td align="right">Ferdi Kaza</td></tr>
+<tr><td align="left">...</td><td align="right">...</td></tr>
+<tr><td align="left">10</td><td align="right">Yurtdışı Seyahat Sağlık</td></tr>
+<tr><td align="left">...</td><td align="right">...</td></tr>
+</tbody></table>
+<p>Tüm listeye erişmek için <code>InsurGateway API</code> servislerinden faydalanabilirsiniz.</p>
+<pre><code>Parameter Id: 25
+
+https://api.insurapps.net/api/parameters/25/parameterValues
+</code></pre>
+<p>Bu parametrelerin dışında bir değer gönderiminde, <code>InsurGateway</code> hatalı parametrik değer hatası verecektir.</p>
+<div class="callout error">
+<p>
+⚠️ (125 - Ürün Branşı), nolu key'ler için girilen değerler parametre listelerinde mevcut değil.
+</p>
+</div><h3 id="key-parametreleri:-126">Key Parametreleri: 126</h3>
+<p>126 numaralı key, sigorta şirketlerini simgeler. Bu keye ait gönderilebilecek parametrelerin bir kısmı aşağıda tablo halinde verilmiştir.</p>
+<table><thead><tr><th align="left">Değer</th><th align="right">Açıklama</th></tr></thead><tbody>
+<tr><td align="left">0</td><td align="right">Tüm Sigorta Şirketleri</td></tr>
+<tr><td align="left">2</td><td align="right">Eureko Sigorta</td></tr>
+<tr><td align="left">7</td><td align="right">Anadolu Sigorta</td></tr>
+<tr><td align="left">54</td><td align="right">HDI Sigorta</td></tr>
+<tr><td align="left">...</td><td align="right">...</td></tr>
+</tbody></table>
+<p>Tüm listeye erişmek için <code>InsurGateway API</code> servislerinden faydalanabilirsiniz.</p>
+<pre><code>Parameter Id: 26
+
+https://api.insurapps.net/api/parameters/26/parameterValues
+</code></pre>
+<p>Bu parametrelerin dışında bir değer gönderiminde, <code>InsurGateway</code> hatalı parametrik değer hatası verecektir.</p>
+<div class="callout error">
+<p>
+⚠️ (126 - Sigorta Şirketi), nolu key'ler için girilen değerler parametre listelerinde mevcut değil.
+</p>
+</div><h3 id="key-parametreleri:-127">Key Parametreleri: 127</h3>
+<p>127 numaralı key, <code>InsurGateway</code> ürün kodlarını simgeler. Bu keye ait gönderilebilecek parametrelerin bir kısmı aşağıda tablo halinde verilmiştir.</p>
+<table><thead><tr><th align="left">Değer</th><th align="right">Açıklama</th></tr></thead><tbody>
+<tr><td align="left">0</td><td align="right">Tüm Ürünler</td></tr>
+<tr><td align="left">2178</td><td align="right">HDI Katılım Kasko Dynamic</td></tr>
+<tr><td align="left">2183</td><td align="right">Bereket Sigorta Pos</td></tr>
+<tr><td align="left">2262</td><td align="right">Sompo Konut</td></tr>
+<tr><td align="left">...</td><td align="right">...</td></tr>
+</tbody></table>
+<p>Tüm listeye erişmek için <code>InsurGateway API</code> servislerinden faydalanabilirsiniz.</p>
+<pre><code>Parameter Id: 27
+
+https://api.insurapps.net/api/parameters/27/parameterValues
+</code></pre>
+<p>Bu parametrelerin dışında bir değer gönderiminde, <code>InsurGateway</code> hatalı parametrik değer hatası verecektir.</p>
+<div class="callout error">
+<p>
+⚠️ (127 - Ürün), nolu key'ler için girilen değerler parametre listelerinde mevcut değil.
+</p>
+</div><h3 id="cevap-nesnesi">Cevap Nesnesi</h3>
+<p>Servisten dönecek olan alanlar ve bunlara ait açıklamalar aşağıda tablo halinde verilmiştir.</p>
+<table><thead><tr><th align="left">İsim</th><th align="center">Tip</th><th align="right">Açıklama</th></tr></thead><tbody>
+<tr><td align="left">ResponseKeyValues</td><td align="center">List&lt;<a href="/models/key-value-set"><code>KeyValueSet</code></a>&gt;</td><td align="right">Key - Value olacak şekilde değer seti döner.</td></tr>
+<tr><td align="left">ProposalResults</td><td align="center">List&lt;<a href="/models/proposal-result"><code>ProposalResult</code></a>&gt;</td><td align="right">Teklif detaylarını döner.</td></tr>
+</tbody></table>
+<h3 id="kullanım-örneği">Kullanım Örneği</h3>
+<pre><code class="language-csharp">// gönderilecek key-value listesini oluşturur.
+var keyValueList = new Dictionary&lt;int, List&lt;string&gt;&gt;()
+{
+    { 113, new List&lt;string&gt;() { "1" }},
+    { 114, new List&lt;string&gt;() { "username" }},
+    { 115, new List&lt;string&gt;() { "password" }},
+
+    { 125, new List&lt;string&gt;() { "1" }},
+    { 126, new List&lt;string&gt;() { "54" }},
+    { 127, new List&lt;string&gt;() { "2178" }}
+};
+
+// asenkron bir metot içerisindeysek:
+var response = await new InsurGatewaySDK.Shared.Proposal()
+                            .GetProposal(keyValueList);
+
+// write your codes
+</code></pre>
+<p>Eğer asenkron bir metot içerisinde değilsek ve await operatörünü kullanamıyorsak, response aşağıdaki şekilde de alınabilir.</p>
+<pre><code class="language-csharp">var response = Task.Run(async () =&gt; await new InsurGatewaySDK.Shared.Proposal().GetProposal(keyValueList))
+                    .ConfigureAwait(false)
+                    .GetAwaiter()
+                    .GetResult();
+
+// write your codes
+</code></pre>
+
+            </div>
+            <div class='sidebar-right'>
+                <div class='page-nav' id='page-nav'>
+                    <p class='page-nav-header'>On this page</p>
+                    <ul>
+                        
+                        <li class='page-nav-level-1'>
+                            <a href='#proposal-servis-dokümantasyonu'>Proposal Servis Dokümantasyonu</a>
+                        </li>
+                        
+                        <li class='page-nav-level-2'>
+                            <a href='#getproposal'>GetProposal</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#parametreler'>Parametreler</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#zorunlu-keyler'>Zorunlu Keyler</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#key-parametreleri:-125'>Key Parametreleri: 125</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#key-parametreleri:-126'>Key Parametreleri: 126</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#key-parametreleri:-127'>Key Parametreleri: 127</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#cevap-nesnesi'>Cevap Nesnesi</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#kullanım-örneği'>Kullanım Örneği</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class='wave-container'>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                    <path fill-opacity="0.35"
+                        d="M0,192L60,213.3C120,235,240,277,360,277.3C480,277,600,235,720,192C840,149,960,107,1080,122.7C1200,139,1320,213,1380,250.7L1440,288L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+                    </path>
+                    <path fill-opacity="0.5"
+                        d="M0,160L60,181.3C120,203,240,245,360,229.3C480,213,600,139,720,138.7C840,139,960,213,1080,229.3C1200,245,1320,203,1380,181.3L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+                    </path>
+                    <path fill-opacity="0.2"
+                        d="M0,224L60,197.3C120,171,240,117,360,117.3C480,117,600,171,720,186.7C840,203,960,181,1080,186.7C1200,192,1320,224,1380,240L1440,256L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+                    </path>
+                </svg>
+                <p>Powered by <a href='https://cli.doctave.com' target='_blank'>Doctave</a></p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/assets/katex.js?v=1669131067"></script>
+    <script type="text/javascript" src="/assets/mermaid.js?v=1669131067"></script>
+    <script type="text/javascript" src="/assets/elasticlunr.js?v=1669131067"></script>
+    <script type="text/javascript" src="/assets/prism.js?v=1669131067"></script>
+    <script type="text/javascript" src="/assets/doctave-app.js?v=1669131067"></script>
+
+    
+</body>
+
+</html>

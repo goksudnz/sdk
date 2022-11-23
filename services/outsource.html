@@ -1,0 +1,357 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>OutsourceProcess Service</title>
+    <meta name="description" content="Documentation for InsurGateway SDK">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/assets/normalize.css?v=1669131067"
+        media="screen" />
+    <link rel="stylesheet" type="text/css" href="/assets/doctave-style.css?v=1669131067"
+        media="screen" />
+    <link rel="stylesheet" type="text/css" href="/assets/katex.css?v=1669131067" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/assets/prism-ghcolors.css?v=1669131067"
+        media="screen" />
+
+    <script>
+        var DOCTAVE_TIMESTAMP = "1669131067";
+        var BASE_PATH = "/";
+        var color = localStorage.getItem('doctave-color')
+
+        if (color === 'dark') {
+            document.getElementsByTagName('html')[0].classList.remove('light');
+            document.getElementsByTagName('html')[0].classList.add('dark');
+        } else {
+            document.getElementsByTagName('html')[0].classList.remove('dark');
+            document.getElementsByTagName('html')[0].classList.add('light');
+        }
+    </script>
+
+    
+</head>
+
+<body>
+    <label for='menu-toggle-switch' class='menu-toggle-button'>
+        ☰
+    </label>
+    <input type="checkbox" id="menu-toggle-switch" value='0' />
+    <div class='page'>
+        <div class='header'>
+            <div class='logo'>
+                
+                <h2 class='project-name'>
+                    <a href="/">
+                        InsurGateway SDK
+                    </a>
+                </h2>
+            </div>
+            <div class='search'>
+                <form id='search-form'>
+    <input type='text' id='search-box' autocomplete="off" placeholder="Search..."></input>
+    <span class='search-icon'>S</span>
+    <ul id='search-results'></ul>
+</form>
+
+            </div>
+            <div class='header-dummy-right'>
+            </div>
+        </div>
+        <div class='container'>
+            <div class='sidebar-left'>
+                <nav class='site-nav'>
+    <ul>
+        
+            <li><a href="/">Başlarken</a></li>
+            
+        
+            <li><a href="/introduction">Genel Bakış</a></li>
+            
+        
+            <li><a href="/integration">Entegrasyon</a></li>
+            
+        
+            <li><a href="/services">Servisler</a></li>
+            
+                <ul>
+    
+        <li><a href="/services/document">Document Service</a></li>
+        
+    
+        <li><a class="active" href="/services/outsource">OutsourceProcess Service</a></li>
+        
+    
+        <li><a href="/services/proposal">Proposal Service</a></li>
+        
+    
+</ul>
+
+            
+        
+            <li><a href="/models">Modeller</a></li>
+            
+                <ul>
+    
+        <li><a href="/models/document-response">DocumentResponse</a></li>
+        
+    
+        <li><a href="/models/installment-detail">InstallmentDetail</a></li>
+        
+    
+        <li><a href="/models/key-value-set">KeyValueSet</a></li>
+        
+    
+        <li><a href="/models/outsource-process-response">OutsourceProcessResponse</a></li>
+        
+    
+        <li><a href="/models/parameter-value-set">ParameterValueSet</a></li>
+        
+    
+        <li><a href="/models/price">Price</a></li>
+        
+    
+        <li><a href="/models/proposal-response">ProposalResponse</a></li>
+        
+    
+        <li><a href="/models/proposal-result">ProposalResult</a></li>
+        
+    
+        <li><a href="/models/response">Response&lt;T&gt;</a></li>
+        
+    
+</ul>
+
+            
+        
+    </ul>
+    <span id='light-dark-mode-switch'>
+        <svg xmlns="http://www.w3.org/2000/svg" id="dark-mode-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" id="light-mode-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+        </svg>
+    </span>
+</nav>
+
+            </div>
+            <div class='doctave-content'>
+                <h1 id="outsourceprocess-servis-dokümantasyonu">OutsourceProcess Servis Dokümantasyonu</h1>
+<p>Bu doküman, <code>InsurGateway</code>'in <code>OutsourceProcess</code> servisinde kullanabileceğiniz metotları barındırır. Servisin doğru kullanımı için gerekli olan bilgileri metotlara ait açıklamalar içerisinde bulabilirsiniz.</p>
+<h2 id="getoutsourceprocess">GetOutsourceProcess</h2>
+<p><code>InsurGateway</code> üzerinden sigorta şirketlerinin sağladığı kaynak servislerine erişebilmenizi sağlayan servistir. Bu servisi kullanarak <strong>riziko adres sorgulama, müşteri sorgulama, vb.</strong> şirket servisleriyle haberleşebilirsiniz.</p>
+<h3 id="parametreler">Parametreler</h3>
+<p>İlgili metodun ihtiyaç duyduğu parametreler ve bunların açıklaması aşağıda tablo halinde verilmiştir.</p>
+<table><thead><tr><th align="left">İsim</th><th align="center">Tip</th><th align="right">Açıklama</th></tr></thead><tbody>
+<tr><td align="left">outsourceProcessId</td><td align="center">int</td><td align="right">Serviste kullanılacak Outsource Servis tipine ait id bilgisidir.</td></tr>
+<tr><td align="left">keyValuePairs</td><td align="center">Dictionary&lt;int, List&lt;string&gt;&gt;</td><td align="right">Servise gönderilecek key - value değerlerini tutar. İhtiyaç halinde key için birden fazla değer gönderilebilir.</td></tr>
+</tbody></table>
+<p>keyValuePairs parametresi boş gönderildiği taktirde, SDK tarafından boş gönderilemeyeceğine yönelik hata mesajı dönecektir.</p>
+<div class="callout error">
+<p>
+⚠️ keyValuePair için null veya boş değer olamaz!
+</p>
+</div><h3 id="zorunlu-keyler">Zorunlu Keyler</h3>
+<p>Servisin geliştirme kiti tarafından başarılı şekilde <code>InsurGateway</code> servislerine erişebilmesi için metot özelinde zorunlu tutulan keyler aşağıda belirtilmiştir.</p>
+<p>Belirtilen keyler gönderilmediği taktirde SDK, <code>InsurGateway</code> servislerini tetiklemez.</p>
+<table><thead><tr><th align="left">Key</th><th align="right">Açıklama</th></tr></thead><tbody>
+<tr><td align="left">113</td><td align="right">Acente Id</td></tr>
+<tr><td align="left">114</td><td align="right">Acente Kullanıcı Adı</td></tr>
+<tr><td align="left">115</td><td align="right">Acente Şifresi</td></tr>
+</tbody></table>
+<div class="callout error">
+<p>
+⚠️ Acente giriş bilgileri eksik!
+</p>
+</div><h4 id="outsourceprocess:-1">OutsourceProcess: 1</h4>
+<p>UAVT Mahalle Sorgulama kaynak servisidir.</p>
+<p>Tabloda belirtilen keylerden herhangi birinin gönderilmesi yeterlidir. Hepsinin gönderilmesine gerek yoktur.</p>
+<table><thead><tr><th align="left">Key</th><th align="right">Açıklama</th></tr></thead><tbody>
+<tr><td align="left">134</td><td align="right">Bağımlı Parametre Değeri</td></tr>
+<tr><td align="left">178</td><td align="right">Riziko İli</td></tr>
+<tr><td align="left">180</td><td align="right">Belde, Bucak, Köy</td></tr>
+</tbody></table>
+<div class="callout error">
+<p>
+⚠️ Zorunlu Keylerden en az biri gönderilmeli!
+</p>
+</div><h3 id="key-parametreleri:-178">Key Parametreleri: 178</h3>
+<p>178 numaralı key, riziko il parametrelerini simgeler. Bu keye ait gönderilebilecek parametrelerin bir kısmı aşağıda tablo halinde verilmiştir.</p>
+<table><thead><tr><th align="left">Değer</th><th align="right">Açıklama</th></tr></thead><tbody>
+<tr><td align="left">1</td><td align="right">ADANA</td></tr>
+<tr><td align="left">2</td><td align="right">ADIYAMAN</td></tr>
+<tr><td align="left">3</td><td align="right">AFYONKARAHİSAR</td></tr>
+<tr><td align="left">4</td><td align="right">AĞRI</td></tr>
+<tr><td align="left">...</td><td align="right">...</td></tr>
+<tr><td align="left">34</td><td align="right">İSTANBUL</td></tr>
+<tr><td align="left">35</td><td align="right">İZMİR</td></tr>
+<tr><td align="left">...</td><td align="right">...</td></tr>
+<tr><td align="left">81</td><td align="right">DÜZCE</td></tr>
+<tr><td align="left">89</td><td align="right">KIBRIS</td></tr>
+<tr><td align="left">999</td><td align="right">YURTDIŞI</td></tr>
+</tbody></table>
+<p>Tüm listeye erişmek için <code>InsurGateway API</code> servislerinden faydalanabilirsiniz.</p>
+<pre><code>Parameter Id: 2
+
+https://api.insurapps.net/api/parameters/2/parameterValues
+</code></pre>
+<p>Bu parametrelerin dışında bir değer gönderiminde, <code>InsurGateway</code> hatalı parametrik değer hatası verecektir.</p>
+<div class="callout error">
+<p>
+⚠️ (178 - Riziko İli), nolu key'ler için girilen değerler parametre listelerinde mevcut değil.
+</p>
+</div><h3 id="key-parametreleri:-180">Key Parametreleri: 180</h3>
+<p>180 numaralı key, riziko belde - bucak - köy parametrelerini simgeler. Bu keye ait gönderilebilecek parametrelerin bir kısmı aşağıda tablo olarak verilmiştir.</p>
+<table><thead><tr><th align="left">Değer</th><th align="right">Açıklama</th></tr></thead><tbody>
+<tr><td align="left">1000</td><td align="right">KARAARSLAN</td></tr>
+<tr><td align="left">1002</td><td align="right">KIZILDAĞ</td></tr>
+<tr><td align="left">10027</td><td align="right">MERKEZ</td></tr>
+<tr><td align="left">...</td><td align="right">...</td></tr>
+</tbody></table>
+<p>Tüm listeye erişmek için <code>InsurGateway API</code> servislerinden faydalanabilirsiniz.</p>
+<pre><code>Parameter Id: 52
+
+https://api.insurapps.net/api/parameters/52/parameterValues
+</code></pre>
+<p>Bu parametrelerin dışında bir değer gönderiminde, <code>InsurGateway</code> hatalı parametrik değer hatası verecektir.</p>
+<div class="callout error">
+<p>
+⚠️ (180 - Riziko Belde-Bucak-Köy), nolu key'ler için girilen değerler parametre listelerinde mevcut değil.
+</p>
+</div><h3 id="key-parametreleri:-303">Key Parametreleri: 303</h3>
+<p>303 numaralı key, outsource process parametrelerini simgeler. Bu keye ait gönderilecek parametrelerin bir kısmı aşağıda tablo halinde verilmiştir.</p>
+<table><thead><tr><th align="left">Değer</th><th align="right">Açıklama</th></tr></thead><tbody>
+<tr><td align="left">1</td><td align="right">UAVT Mahalle</td></tr>
+<tr><td align="left">2</td><td align="right">UAVT Cadde - Sokak</td></tr>
+<tr><td align="left">3</td><td align="right">UAVT Bina</td></tr>
+<tr><td align="left">4</td><td align="right">UAVT Bina Dairesi (Bağımsız Alan)</td></tr>
+<tr><td align="left">5</td><td align="right">Dask Eski Poliçe Bilgilerini Sorgula</td></tr>
+<tr><td align="left">...</td><td align="right">...</td></tr>
+<tr><td align="left">30</td><td align="right">TCMB Banka Sorgula</td></tr>
+<tr><td align="left">31</td><td align="right">TCMB Banka Şube Sorgula</td></tr>
+<tr><td align="left">...</td><td align="right">...</td></tr>
+</tbody></table>
+<p>Tüm listeye erişmek için <code>InsurGateway Panel</code> veya <code>InsurGateway API</code> servislerinden faydalanabilirsiniz.</p>
+<p>Bu parametlerin dışında bir değer gönderiminde, <code>InsurGateway</code> hatalı parametrik değer hatası verecektir.</p>
+<div class="callout error">
+<p>
+⚠️ (303 - OutSource Process), nolu key'ler için girilen değerler parametre listelerinde mevcut değil.
+</p>
+</div><h3 id="cevap-nesnesi">Cevap Nesnesi</h3>
+<p>Servisten dönecek olan alanlar ve bunlara ait açıklamalar aşağıda tablo halinde verilmiştir.</p>
+<table><thead><tr><th align="left">İsim</th><th align="center">Tip</th><th align="right">Açıklama</th></tr></thead><tbody>
+<tr><td align="left">ResponseKeyValues</td><td align="center">List&lt;<a href="/models/key-value-set"><code>KeyValueSet</code></a>&gt;</td><td align="right">Key - Value olacak şekilde değer seti döner.</td></tr>
+<tr><td align="left">ParameterValues</td><td align="center">List&lt;<a href="/models/parameter-value-set"><code>ParameterValueSet</code></a>&gt;</td><td align="right">Parametrik değer listesi döner.</td></tr>
+</tbody></table>
+<h3 id="kullanım-örneği">Kullanım Örneği</h3>
+<pre><code class="language-csharp">// kullanılacak outsource process id'si belirlenir.
+var outsourceProcessId = 1;
+
+// gönderilecek key-value listesini oluşturur.
+var keyValueList = new Dictionary&lt;int, List&lt;string&gt;&gt;()
+{
+    { 113, new List&lt;string&gt;() { "1" }},
+    { 114, new List&lt;string&gt;() { "username" }},
+    { 115, new List&lt;string&gt;() { "password" }},
+
+    { 178, new List&lt;string&gt;() { "34" } }
+};
+
+// asenkron bir metot içerisindeysek:
+var response = await new InsurGatewaySDK.Shared.OutsourceProcess()
+                            .GetOutsourceProcess(outsourceProcessId, keyValueList);
+
+// write your codes
+</code></pre>
+<p>Eğer asenkron bir metot içerisinde değilsek ve await operatörünü kullanamıyorsak, response aşağıdaki şekilde de alınabilir.</p>
+<pre><code class="language-csharp">var response = Task.Run(async () =&gt; await new InsurGatewaySDK.Shared.OutsourceProcess().GetOutsourceProcess(outsourceProcessId, keyValueList))
+                    .ConfigureAwait(false)
+                    .GetAwaiter()
+                    .GetResult();
+
+// write your codes
+</code></pre>
+
+            </div>
+            <div class='sidebar-right'>
+                <div class='page-nav' id='page-nav'>
+                    <p class='page-nav-header'>On this page</p>
+                    <ul>
+                        
+                        <li class='page-nav-level-1'>
+                            <a href='#outsourceprocess-servis-dokümantasyonu'>OutsourceProcess Servis Dokümantasyonu</a>
+                        </li>
+                        
+                        <li class='page-nav-level-2'>
+                            <a href='#getoutsourceprocess'>GetOutsourceProcess</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#parametreler'>Parametreler</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#zorunlu-keyler'>Zorunlu Keyler</a>
+                        </li>
+                        
+                        <li class='page-nav-level-4'>
+                            <a href='#outsourceprocess:-1'>OutsourceProcess: 1</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#key-parametreleri:-178'>Key Parametreleri: 178</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#key-parametreleri:-180'>Key Parametreleri: 180</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#key-parametreleri:-303'>Key Parametreleri: 303</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#cevap-nesnesi'>Cevap Nesnesi</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#kullanım-örneği'>Kullanım Örneği</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class='wave-container'>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                    <path fill-opacity="0.35"
+                        d="M0,192L60,213.3C120,235,240,277,360,277.3C480,277,600,235,720,192C840,149,960,107,1080,122.7C1200,139,1320,213,1380,250.7L1440,288L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+                    </path>
+                    <path fill-opacity="0.5"
+                        d="M0,160L60,181.3C120,203,240,245,360,229.3C480,213,600,139,720,138.7C840,139,960,213,1080,229.3C1200,245,1320,203,1380,181.3L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+                    </path>
+                    <path fill-opacity="0.2"
+                        d="M0,224L60,197.3C120,171,240,117,360,117.3C480,117,600,171,720,186.7C840,203,960,181,1080,186.7C1200,192,1320,224,1380,240L1440,256L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+                    </path>
+                </svg>
+                <p>Powered by <a href='https://cli.doctave.com' target='_blank'>Doctave</a></p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/assets/katex.js?v=1669131067"></script>
+    <script type="text/javascript" src="/assets/mermaid.js?v=1669131067"></script>
+    <script type="text/javascript" src="/assets/elasticlunr.js?v=1669131067"></script>
+    <script type="text/javascript" src="/assets/prism.js?v=1669131067"></script>
+    <script type="text/javascript" src="/assets/doctave-app.js?v=1669131067"></script>
+
+    
+</body>
+
+</html>
