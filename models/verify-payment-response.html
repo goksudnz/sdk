@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Entegrasyon</title>
+    <title>VerifyPaymentResponse</title>
     <meta name="description" content="Documentation for InsurGateway SDK">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -75,7 +75,7 @@
             <li><a href="/sdk/introduction">Genel Bakış</a></li>
             
         
-            <li><a class="active" href="/sdk/integration">Entegrasyon</a></li>
+            <li><a href="/sdk/integration">Entegrasyon</a></li>
             
         
             <li><a href="/sdk/services">Servisler</a></li>
@@ -129,7 +129,7 @@
         <li><a href="/sdk/models/response">Response&lt;T&gt;</a></li>
         
     
-        <li><a href="/sdk/models/verify-payment-response">VerifyPaymentResponse</a></li>
+        <li><a class="active" href="/sdk/models/verify-payment-response">VerifyPaymentResponse</a></li>
         
     
 </ul>
@@ -150,56 +150,14 @@
 
             </div>
             <div class='doctave-content'>
-                <h1 id="entegrasyon-dokümanı">Entegrasyon Dokümanı</h1>
-<p><strong>InsurGatewaySDK</strong> nuget paketini yüklemek için aşağıdaki yöntemleri kullanın. Her iki yöntemde de erişim problemi yaşamamanız için <code>InsurGateway</code> tarafında yetki tanımlaması yapılması gerektiğini unutmayın. </p>
-<p>Yetkiniz yoksa tanımlatmak için <a href="mailto:help@acerpro.com.tr">help@acerpro.com.tr</a> mail adresi ile iletişime geçmekten çekinmeyin.</p>
-<h2 id="nuget-paketi">Nuget Paketi</h2>
-<h3 id="acerprolocal-nuget-manager">AcerproLocal Nuget Manager</h3>
-<p><strong>InsurGatewaySDK</strong> nuget paketini kullanmak için öncelikle AcerproLocal Nuget servisini eklemeniz gerekir.</p>
-<div class="mermaid">
-flowchart LR
-    id1(Visual Studio) --&gt; id2(Tools) --&gt; id3(Options) --&gt; id4(Nuget Package Manager) --&gt; id5(Package Sources)
-</div>
-<p>Yukarıda belirtilen kısma geldiğinizde üst kısımda bulunan + butonuna basın. Akabinde ilgili alanları aşağıdaki bilgilerle doldurun ve güncelleyin.</p>
-<table><thead><tr><th align="left">Alan</th><th></th><th align="right">Değer</th></tr></thead><tbody>
-<tr><td align="left">Name</td><td></td><td align="right">AcerproLocal</td></tr>
-<tr><td align="left">Source</td><td></td><td align="right">http://packages.acerpro.com/nuget</td></tr>
+                <h1 id="verifypaymentresponse">VerifyPaymentResponse</h1>
+<p>Ödeme doğrulama işlemine ait bilgileri barındırır. Ödeme doğrulama servisinden dönecek cevabın modelidir.</p>
+<table><thead><tr><th align="left">İsim</th><th align="center">Tip</th><th align="right">Açıklama</th></tr></thead><tbody>
+<tr><td align="left">OperationId</td><td align="center">string</td><td align="right">Operasyona ait eşsiz id bilgisi</td></tr>
+<tr><td align="left">PaymentNo</td><td align="center">string</td><td align="right">Tahsilat numarası</td></tr>
+<tr><td align="left">PaymentAmount</td><td align="center">string</td><td align="right">Tahsilat tutarı</td></tr>
+<tr><td align="left">RefundAmount</td><td align="center">string</td><td align="right">İade tutarı</td></tr>
 </tbody></table>
-<p>Sonrasında Nuget Package Manager kısmından Package Source'u AcerproLocal olarak belirtip <strong>InsurGatewaySDK</strong> olarak aratın.</p>
-<div class="mermaid">
-flowchart LR
-    id1(Manage Nuget Packages) --&gt; id2(Package Source: AcerproLocal) --&gt; id3(Search: InsurGatewaySDK)
-</div>
-<p><strong>InsurGatewaySDK</strong> nuget paketini yükleyin.</p>
-<h3 id="github-release">GitHub Release</h3>
-<p>Henüz hazırlanmamıştır.</p>
-<h2 id="dikkat-edilmesi-gerekenler">Dikkat Edilmesi Gerekenler</h2>
-<ul>
-<li>
-<p>Servislere başarılı şekilde erişmek için <code>InsurGateway</code> uygulamasında tarafınıza ait bir acente oluşturulmuş olması gerekmektedir.</p>
-</li>
-<li>
-<p>Güvenlik gerekçesiyle IP tanımınızın <code>InsurGateway</code> uygulaması üzerinde tanımlanmış olması gerekir. Aksi halde SDK <code>InsurGateway</code> ile haberleşse dahi IP yetkisinin tanımlı olmadığını belirten bir hata mesajı dönecektir.</p>
-</li>
-</ul>
-<div class="callout error">
-<p>
-⚠️ 0.0.0.0 is not authorized to access Gateway.
-</p>
-</div>
-<ul>
-<li>
-<p>Yönetilmeyen bir hata aldığınız durumda <a href="mailto:help@acerpro.com.tr">help@acerpro.com.tr</a> ile iletişime geçin. Sizin için süreci hızlandırıyor olacağız.</p>
-</li>
-<li>
-<p>Bildirim servislerinin, ilgili süreçlerin tamamlandığı vb. bildirimleri tarafınıza yapabilmesi için, <strong>bildirim alma servisi entegrasyonunun</strong> <code>InsurGateway</code> tarafında tamamlandığından ve <strong>buna bağlı tanımlamaların</strong> yapıldığından emin olun.</p>
-</li>
-</ul>
-<h2 id="servis-kullanımları">Servis Kullanımları</h2>
-<p>İhtiyacınız olan servisleri kullanabilmek için servis dokümantasyonlarını inceleyin.</p>
-<p><a href="/sdk/services/proposal"><code>Proposal Servis Dokümantasyonu</code></a></p>
-<p><a href="/sdk/services/outsource"><code>OutsourceProcess Servis Dokümantasyonu</code></a></p>
-<p><a href="/sdk/services/document"><code>Document Servis Dokümantasyonu</code></a></p>
 
             </div>
             <div class='sidebar-right'>
@@ -208,27 +166,7 @@ flowchart LR
                     <ul>
                         
                         <li class='page-nav-level-1'>
-                            <a href='#entegrasyon-dokümanı'>Entegrasyon Dokümanı</a>
-                        </li>
-                        
-                        <li class='page-nav-level-2'>
-                            <a href='#nuget-paketi'>Nuget Paketi</a>
-                        </li>
-                        
-                        <li class='page-nav-level-3'>
-                            <a href='#acerprolocal-nuget-manager'>AcerproLocal Nuget Manager</a>
-                        </li>
-                        
-                        <li class='page-nav-level-3'>
-                            <a href='#github-release'>GitHub Release</a>
-                        </li>
-                        
-                        <li class='page-nav-level-2'>
-                            <a href='#dikkat-edilmesi-gerekenler'>Dikkat Edilmesi Gerekenler</a>
-                        </li>
-                        
-                        <li class='page-nav-level-2'>
-                            <a href='#servis-kullanımları'>Servis Kullanımları</a>
+                            <a href='#verifypaymentresponse'>VerifyPaymentResponse</a>
                         </li>
                         
                     </ul>
